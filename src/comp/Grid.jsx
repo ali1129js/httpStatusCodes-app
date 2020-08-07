@@ -1,11 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "./Card";
-//maps data and return cards components
-
-const Grid = ({ cards, handleSwitch }) => {
-  const makeCards = () => {
-    cards.map((card) => <Card />);
-  };
-  return <div className="grid">{makeCards()} </div>;
+const Grid = ({ cards, flipCard }) => {
+  const renderCards = cards.map((card) => (
+    <div className="col-2" key={card.id}>
+      <Card
+        flipCard={flipCard(card.id)}
+        front={card.front}
+        back={card.back}
+        id={card.id}
+      />
+    </div>
+  ));
+  console.log(renderCards);
+  return <div className="row">{renderCards}</div>;
 };
 export default Grid;

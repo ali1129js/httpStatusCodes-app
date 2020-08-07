@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      cards: [{ front: "201", back: "ok" }],
+      cards: [{ front: "201", back: "ok", id: "id" }],
       decks: "0xx",
       bools: { is2xx: false, is3xx: false, is4xx: false, is5xx: false },
     };
@@ -40,7 +40,7 @@ class App extends Component {
         return;
     }
   };
-  handleSwitch = () => {
+  handleLoad = () => {
     switch (this.state.decks) {
       case "2xx":
         this.setState((prevState) => ({
@@ -61,7 +61,9 @@ class App extends Component {
         return;
     }
   };
-
+  flipCard = (id) => {
+    console.log(id);
+  };
   render() {
     return (
       <div className="container">
@@ -71,21 +73,13 @@ class App extends Component {
           getColor={this.getColor}
           bools={this.state.bools}
         />
-        <Grid cards={this.state.cards} handleSwitch={this.handleSwitch} />
-        <button
-          onClick={this.handleSwitch}
-          className="btn btn-outline-light m-2"
-        >
+        <button onClick={this.handleLoad} className="btn btn-outline-light m-2">
           Load Cards {this.state.decks}
         </button>
+        <Grid cards={this.state.cards} flipCard={this.flipCard} />
       </div>
     );
   }
 }
-/*switch (decks) {
-  case "2xx":
-    return "selected";
-  default:
-    return "select";
-}*/
+
 export default App;
