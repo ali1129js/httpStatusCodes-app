@@ -64,6 +64,9 @@ class App extends Component {
   flipCard = (id) => {
     console.log(id);
   };
+  cardClicked = (id) => {
+    console.log("Card with id ", id, "was Clicked");
+  };
   render() {
     return (
       <div className="container">
@@ -76,7 +79,11 @@ class App extends Component {
         <button onClick={this.handleLoad} className="btn btn-outline-light m-2">
           Load Cards {this.state.decks}
         </button>
-        <Grid cards={this.state.cards} flipCard={this.flipCard} />
+        <Grid
+          cards={this.state.cards}
+          flipCard={this.flipCard}
+          cardClicked={this.cardClicked}
+        />
       </div>
     );
   }
