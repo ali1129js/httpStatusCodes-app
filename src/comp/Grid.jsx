@@ -1,20 +1,25 @@
-import React from "react";
+import React, { Fragment } from "react";
+import "./grid.css";
 
 const Grid = ({ cards, flipCard, cardClicked }) => {
-  const frontsArr = cards.map(({ front }) => front);
-  const backsArr = cards.map(({ back }) => back);
-  const mixedArr = [...frontsArr, ...backsArr];
+  const shuffledArr = cards.sort(() => Math.random() - 0.5);
 
-  const shuffledArr = mixedArr.sort(() => Math.random() - 0.5);
-
-  console.log(shuffledArr, mixedArr);
-  const renderCards = mixedArr.map((card, i) => <li key={i}>{card}</li>);
+  const renderCards = shuffledArr.map((card) => (
+    <Fragment key={card.id}>
+      <button className="front" onClick={() => cardClicked(card.id)}>
+        {card.front}
+      </button>
+      <button className="back" onClick={() => cardClicked(card.id)}>
+        {card.back}
+      </button>
+    </Fragment>
+  ));
 
   return <div className="row">{renderCards}</div>;
 };
 export default Grid;
 
-// shuffledArr : Fisher-Yates (aka Knuth) Shuffle.
+// shuffledArr :
 // function shuffle(array) {
 //   var currentIndex = array.length, temporaryValue, randomIndex;
 //

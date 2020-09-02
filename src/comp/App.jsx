@@ -10,6 +10,8 @@ class App extends Component {
       cards: [{ front: "201", back: "ok", id: "id" }],
       decks: "0xx",
       bools: { is2xx: false, is3xx: false, is4xx: false, is5xx: false },
+      selected: [],
+      correct: [],
     };
   }
   changeSet = (e) => {
@@ -61,11 +63,21 @@ class App extends Component {
         return;
     }
   };
-  flipCard = (id) => {
-    console.log(id);
-  };
+  // flipCard = (id) => {
+  //   console.log(id);
+  // };
   cardClicked = (id) => {
     console.log("Card with id ", id, "was Clicked");
+    const { selected } = this.state;
+
+    selected.length === 0
+      ? this.setState({ selected: [id, ...selected] })
+      : this.checkMatch(id);
+  };
+
+  checkMatch = (id) => {
+    const { selected } = this.state;
+    selected[0] === id ? console.log("this is a a match") : alert("WRONG");
   };
   render() {
     return (

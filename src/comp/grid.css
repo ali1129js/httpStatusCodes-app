@@ -1,0 +1,20 @@
+.front {
+  background-color: blue;
+  color: white;
+  height: 200px;
+  margin: 10px;
+  width: 220px;
+  font-size: 2em;
+  border: none;
+  border-radius: 50%;
+}
+.back {
+  background-color: red;
+  color: white;
+  height: 200px;
+  margin: 10px;
+  width: 220px;
+  font-size: 2em;
+  border-radius: 50%;
+  border: none;
+}
